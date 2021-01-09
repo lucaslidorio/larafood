@@ -128,7 +128,7 @@ class ProfileController extends Controller
                         ->where(function($query) use ($request){
                             if($request->filter){
                                 $query->where('name', $request->filter)
-                                ->orWhere('description', 'LIKE', '%{$request->filter}%');
+                                ->orWhere('description', 'LIKE', "%{$request->filter}%");
                             }                            
                         })
                         ->paginate();

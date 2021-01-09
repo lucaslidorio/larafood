@@ -3,14 +3,31 @@
 //Todas as Rotas que possui o prefixo admin
 Route::prefix('admin')
                     ->namespace('Admin')//namespace antes  co controler ex: Admin\PlanController@create
+                    ->middleware('auth')
                     ->group(function () {
 
     
+/*
+
+Rotas Categorias
+    */
+    Route::any('categories/search', 'CategoryController@search')->name('categories.search');
+    Route::resource('categories', 'CategoryController');
+    
+
+/*
+    Rotas Users
+    */
+    Route::any('users/search', 'UserController@search')->name('users.search');
+    Route::resource('users', 'UserController');
+    
+
+
      /*
     Plans x Profiles
     */
-    Route::get('plans/{id}/profile/{idProfile}/detach', 'ACL\PlanProfileController@detachPlanProfile')->name('plans.profiles.detach');  
-    Route::post('plans/{id}/profiles', 'ACL\PlanProfileController@attachProfilesProfile')->name('plans.profiles.attach');
+    Route::get('plans/{id}/profile/{idProfile}/detach', 'ACL\PlanProfileController@detachProfilesPlan')->name('plans.profiles.detach');  
+    Route::post('plans/{id}/profiles', 'ACL\PlanProfileController@attachProfilesPlan')->name('plans.profiles.attach');
     Route::any('plans/{id}/profiles/create', 'ACL\PlanProfileController@profilesAvailable')->name('plans.profiles.available');
     Route::get('plans/{id}/profiles', 'ACL\PlanProfileController@profiles')->name('plans.profiles');  
     Route::get('profiles/{id}/plans', 'ACL\PlanProfileController@plans')->name('profiles.plans');
@@ -49,8 +66,9 @@ Route::prefix('admin')
     /*
     Rotas Detalhes Planos
     */
-    Route::get('plans/{url}/details/create', 'DetailPlanController@create')->name('details.plan.create');
+    
     Route::delete('plans/{url}/details/{idDetail}', 'DetailPlanController@destroy')->name('details.plan.destroy'); 
+    Route::get('plans/{url}/details/create', 'DetailPlanController@create')->name('details.plan.create');
     Route::get('plans/{url}/details/{idDetail}', 'DetailPlanController@show')->name('details.plan.show'); 
     Route::put('plans/{url}/details/{idDetail}', 'DetailPlanController@update')->name('details.plan.update');                    
     Route::get('plans/{url}/details/{idDetail}/edit', 'DetailPlanController@edit')->name('details.plan.edit');
@@ -77,9 +95,13 @@ Route::prefix('admin')
     Rotas Home Dashboard
     */
 
-    Route::get('/ ', 'Admin\PlanController@index')->name('admin.index');
+    Route::get('/ ', 'PlanController@index')->name('admin.index');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//rota do site publico
+Route::get('/plan/{url}', 'Site\SiteController@plan')->name('plan.subscription');
+Route::get('/', 'Site\SiteController@index')->name('site.home');
+
+//Rotas de autenticação
+Auth::routes();
+

@@ -3,7 +3,7 @@
 @section('title', 'Cadastrar Nova Permissão')
 
 @section('content_header')
-<h1>Cadastrar Nova Permissão </h1>
+<h1>Cadastrar Novo Perfil </h1>
 @stop
 @section('content')
     <div class="card">

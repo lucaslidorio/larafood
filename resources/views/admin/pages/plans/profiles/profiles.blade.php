@@ -6,11 +6,11 @@
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Dashboard</a></li>
-    <li class="breadcrumb-item "><a href="{{route('plans.index')}}">Perfis</a></li>
-    <li class="breadcrumb-item active"><a href="{{route('plans.profiles',$plan->id)}}" class="active">Planos</a></li>
+    <li class="breadcrumb-item "><a href="{{route('plans.index')}}">Planos</a></li>
+    <li class="breadcrumb-item active"><a href="{{route('plans.profiles',$plan->id)}}" class="active">Perfis</a></li>
 </ol>
 <h1>Perfis  do Plano  <strong> {{$plan->name}} </strong>  </h1>
-    <a href="{{route('plans.profiles.available', $plan->id)}}" class="btn btn-dark"> ADD NOVA PERFIL</a>
+    <a href="{{route('plans.profiles.available', $plan->id)}}" class="btn btn-dark"> ADD NOVO PERFIL</a>
 @stop
 
 @section('content')

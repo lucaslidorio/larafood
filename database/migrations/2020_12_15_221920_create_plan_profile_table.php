@@ -19,12 +19,12 @@ class CreatePlanProfileTable extends Migration
             $table->unsignedBigInteger('profile_id');
 
             $table->foreign('plan_id')
-                            ->refereces('id')
+                            ->references('id')
                             ->on('plans')
                             ->onDelete('cascade');
 
             $table->foreign('profile_id')
-                            ->refereces('id')
+                            ->references('id')
                             ->on('profiles')
                             ->onDelete('cascade');
         });

@@ -7,7 +7,7 @@ use App\Models\Plan;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
-class PlanPlanController extends Controller
+class PlanProfileController extends Controller
 {
     
     protected $plan, $profile;
@@ -27,7 +27,7 @@ class PlanPlanController extends Controller
         
         $profiles = $plan->profiles()->paginate();
 
-        return view('admin.pages.plans.profiles.profile', compact( 'plan', 'profiles'));
+        return view('admin.pages.plans.profiles.profiles', compact( 'plan', 'profiles'));
         
 
     }
@@ -73,7 +73,7 @@ class PlanPlanController extends Controller
         if(!$request->profiles || count($request->profiles) == 0){
             redirect()
                 ->back()
-                ->with('info', 'É necessário escolher pelo menos uma permissão');
+                ->with('info', 'É necessário escolher pelo menos um plano');
         };
 
         $plan ->profiles()->attach($request->profiles);
