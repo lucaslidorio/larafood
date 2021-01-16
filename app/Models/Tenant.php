@@ -16,7 +16,7 @@ class Tenant extends Model
         return $this->hasMany(User::class);
     }
     public function plan(){
-        return $this->belongsTo(Tenant::class);
+        return $this->belongsTo(Plan::class);
     }
 } 
 

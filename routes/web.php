@@ -6,22 +6,45 @@ Route::prefix('admin')
                     ->middleware('auth')
                     ->group(function () {
 
-    
-/*
 
-Rotas Categorias
+    /*
+    Rotas Produtos
+    */
+    Route::any('tables/search', 'TableController@search')->name('tables.search');
+    Route::resource('tables', 'TableController');
+    
+
+
+
+     /*
+    Produtos x Categorias
+    */
+    Route::get('products/{id}/category/{idCategory}/detach', 'CategoryProductController@detachCategoriesProduct')->name('products.categories.detach');  
+    Route::post('products/{id}/categories', 'CategoryProductController@attachCategoriesProduct')->name('products.categories.attach');
+    Route::any('products/{id}/categories/create', 'CategoryProductController@categoriesAvailable')->name('products.categories.available');
+    Route::get('products/{id}/categories', 'CategoryProductController@categories')->name('products.categories');  
+    Route::get('categories/{id}/products', 'CategoryProductController@products')->name('categories.products');
+            
+    /*
+    Rotas Produtos
+    */
+    Route::any('products/search', 'ProductController@search')->name('products.search');
+    Route::resource('products', 'ProductController');
+    
+
+    /*
+    Rotas Categorias
     */
     Route::any('categories/search', 'CategoryController@search')->name('categories.search');
     Route::resource('categories', 'CategoryController');
     
 
-/*
+    /*
     Rotas Users
     */
     Route::any('users/search', 'UserController@search')->name('users.search');
     Route::resource('users', 'UserController');
     
-
 
      /*
     Plans x Profiles
@@ -31,8 +54,6 @@ Rotas Categorias
     Route::any('plans/{id}/profiles/create', 'ACL\PlanProfileController@profilesAvailable')->name('plans.profiles.available');
     Route::get('plans/{id}/profiles', 'ACL\PlanProfileController@profiles')->name('plans.profiles');  
     Route::get('profiles/{id}/plans', 'ACL\PlanProfileController@plans')->name('profiles.plans');
-                    
-     
 
 
     /*
