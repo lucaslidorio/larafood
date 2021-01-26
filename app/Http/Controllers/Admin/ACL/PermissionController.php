@@ -15,6 +15,7 @@ class PermissionController extends Controller
     {
         //armazena na variavel repository um objeto de permission
         $this->repository = $permission;
+        $this->middleware(['can:permissions']);
     }
 
 

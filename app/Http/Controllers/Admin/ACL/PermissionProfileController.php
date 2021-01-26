@@ -16,6 +16,8 @@ class PermissionProfileController extends Controller
         //armazena na variavel repository um objeto de profile
         $this->profile = $profile;
         $this->permission = $permission;
+
+        $this->middleware(['can:profiles']);
     }
 
     public function permissions($idProfile){

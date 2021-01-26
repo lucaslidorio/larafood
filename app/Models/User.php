@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+
+use App\Models\Traits\UserACLTrait;
 use Illuminate\Database\Eloquent\Builder;
 use App\Observers\TenantObserver;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -9,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, UserACLTrait;
 
     /**
      * The attributes that are mass assignable.

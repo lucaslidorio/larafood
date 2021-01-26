@@ -15,6 +15,8 @@ class ProfileController extends Controller
     {
         //armazena na variavel repository um objeto de profile
         $this->repository = $profile;
+
+        $this->middleware(['can:profiles']);
     }
 
 
@@ -25,6 +27,10 @@ class ProfileController extends Controller
      */
     public function index()
     {
+
+
+        
+
         $profiles= $this->repository->paginate();
 
         return view('admin.pages.profiles.index', compact('profiles'));

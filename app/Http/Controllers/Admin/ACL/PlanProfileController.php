@@ -17,6 +17,8 @@ class PlanProfileController extends Controller
         //armazena na variavel repository um objeto de plan
         $this->plan = $plan;
         $this->profile = $profile;
+
+        $this->middleware(['can:plans']);
     }
 
     public function profiles($idPlan){

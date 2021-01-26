@@ -16,6 +16,8 @@ class CategoryProductController extends Controller
         //armazena na variavel repository um objeto de product
         $this->product = $product;
         $this->category = $category;
+
+        $this->middleware(['can:products']);
     }
 
     public function categories($idProduct){

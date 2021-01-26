@@ -33,9 +33,11 @@
                     
                     <td style="width: 10px;">
                         {{--<a href="{{route('details.product.index', $product->url)}}" class=" btn btn-primary"> Detalhes</a>--}}
-                     
+                        @can('add_cat')
                         <a href="{{route('products.categories.detach', [$product->id, $category->id])}}" class=" btn btn-danger"> DESVINCULAR</a>
-                     </td>
+                    
+                        @endcan
+                      </td>
                 </tr>
                 @endforeach
             </tbody>
