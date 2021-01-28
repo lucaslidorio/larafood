@@ -39,6 +39,13 @@ Route::prefix('admin')
     Route::resource('categories', 'CategoryController');
     
 
+     /*
+    Rotas Tenants
+    */
+    Route::any('tenants/search', 'TenantController@search')->name('tenants.search');
+    Route::resource('tenants', 'TenantController');
+    
+
     /*
     Rotas Users
     */

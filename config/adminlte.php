@@ -230,7 +230,15 @@ return [
     |
     */
 
-    'menu' => [       
+    'menu' => [ 
+        
+        [
+            'text'        => 'Empresas',
+            'url'         => 'admin/tenants', 
+            'icon'     => ' fas fa-building',
+            'can'      =>  'plans' 
+                                  
+        ],
         
         [
             'text'        => 'Planos',
