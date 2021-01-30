@@ -15,4 +15,10 @@ public function profiles(){
 
 }
 
+    //Pega Roles
+    public function roles(){
+        return $this->belongsToMany(Role::class);
+    
+    }
+
 }
