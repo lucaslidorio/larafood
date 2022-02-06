@@ -7,7 +7,7 @@ use App\Http\Requests\StoreUpdateRole;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class ProfileController extends Controller
 {
     protected $repository;
 

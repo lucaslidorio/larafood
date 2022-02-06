@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         //armazena na variavel repository um objeto de user
         $this->repository = $user;
-        $this->middleware(['can:users']);
+      //  $this->middleware(['can:users']);
     }
 
 

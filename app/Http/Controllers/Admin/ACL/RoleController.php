@@ -16,7 +16,7 @@ class RoleController extends Controller
         //armazena na variavel repository um objeto de role
         $this->repository = $role;
 
-        $this->middleware(['can:roles']);
+        //$this->middleware(['can:roles']);
     }
 
 
